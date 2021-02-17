@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import Modals from "../../Carousel/Modal/Modals";
-import EditIcon from "@material-ui/icons/Edit";
+import { Delete, Edit } from "@material-ui/icons";
+import { IconButton, makeStyles } from "@material-ui/core";
+
 import "./card.css";
+
+const useStyles = makeStyles({
+  iconButton: {
+    background: "rgba(255,255,255,0.05)",
+    margin: 5,
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255, 0.1)",
+    },
+    "&:focus": {
+      outline: "none",
+    },
+    "& > span": {
+      color: "white",
+    },
+  },
+});
+
 function Card(props) {
+  const styles = useStyles();
   const [flipped, setFlipped] = useState(false);
   const handleClick = () => {
     setFlipped(!flipped);
@@ -35,11 +55,16 @@ function Card(props) {
         <div className="card-item" onMouseLeave={handleClick}>
           <div className="clickable-card">
             {props.admin ? (
-              <div className="editor">
-                <EditIcon
-                  style={{ cursor: "pointer" }}
+              <div className="admin-controls">
+                <IconButton
+                  className={styles.iconButton}
                   onClick={props.handler}
-                />
+                >
+                  <Edit />
+                </IconButton>
+                <IconButton className={styles.iconButton}>
+                  <Delete />
+                </IconButton>
               </div>
             ) : null}
             <div

@@ -59,8 +59,7 @@
   border: 2px solid
     linear-gradient(45deg, rgba(255, 0, 90, 1) 0%, rgba(10, 24, 61, 1) 90%);
 }
-
-.editor {
+.admin-controls {
   width: 100%;
   color: white;
   text-align: right;
